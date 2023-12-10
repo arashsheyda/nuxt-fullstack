@@ -3,12 +3,12 @@ export default defineEventHandler((event) => {
 
   const { url } = event.node.req
 
-  // mongo.exclude.forEach((item) => {
-  //   if (`/api/auth/${item}` === url) {
-  //     throw createError({
-  //       statusCode: 404,
-  //       statusMessage: `Page not found: ${url}`
-  //     })
-  //   }
-  // })
+  mongo.exclude.forEach((item) => {
+    if (`/api/auth/${item}` === url) {
+      throw createError({
+        statusCode: 404,
+        statusMessage: `Page not found: ${url}`
+      })
+    }
+  })
 })
