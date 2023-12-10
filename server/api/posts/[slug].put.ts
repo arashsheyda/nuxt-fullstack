@@ -1,10 +1,13 @@
 export default defineEventHandler(async (event) => {
-  await requireAuth(event)
   const body = await readBody(event)
-  try {
-    return await PostSchema.findOneAndUpdate({ slug: event.context.params?.slug }, body, { new: true })
-  }
-  catch (error) {
-    return error
+  const { email } = await requireAuth(event)
+  const user = await UserSchema.findOne({ email })
+  if (user) {
+    try {
+      return await PostSchema.findOneAndUpdate({ user: user._id, slug: event.context.params?.slug }, body, { new: true })
+    }
+    catch (error) {
+      return error
+    }
   }
 })
