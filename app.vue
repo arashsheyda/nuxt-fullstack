@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { H3Error } from 'h3'
-import '@unocss/reset/tailwind.css'
 
 const toast = useToast()
 const router = useRouter()
@@ -153,3 +152,10 @@ function onError(error: H3Error) {
     </Body>
   </Html>
 </template>
+
+<style>
+span[class^="i-"] {
+  background-size: contain;
+  background-position: center;
+}
+</style>

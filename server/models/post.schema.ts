@@ -1,5 +1,5 @@
-import { Types } from 'mongoose'
 import { defineMongooseModel } from '#nuxt/mongoose'
+import { Types } from 'mongoose'
 import type { Post } from '~/types'
 
 export const PostSchema = defineMongooseModel<Post>({
